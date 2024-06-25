@@ -1,0 +1,47 @@
+body {
+    background: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark_embroidery.png');
+    background-size: cover;
+    color: #fff;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 10px;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table {
+    color: #fff;
+    
+}
+
+.table thead th {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table tbody tr td {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table .badge-secondary {
+    background-color: #ffc107;
+}
+
+.table .badge-success {
+    background-color: #28a745;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
