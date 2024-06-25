@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">To-Do List</h1>
+        <div class="text-center text-muted">{{ current_time }}</div>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Task List
+                        <a href="/clear" class="btn btn-danger float-right btn-sm">Clear List</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for task in tasks %}
+                                <tr>
+                                    <td>{{ task.id }}</td>
+                                    <td>{{ task.task }}</td>
+                                    <td>
+                                        <span class="badge badge-{{ 'secondary' if task.status == 'Not done' else 'success' }}">{{ task.status }}</span>
+                                    </td>
+                                    <td>
+                                        <form action="/update/{{ task.id }}" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                        </form>
+                                        <a href="/delete/{{ task.id }}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Add New Task
+                    </div>
+                    <div class="card-body">
+                        <form action="/add" method="post">
+                            <div class="form-group">
+                                <input type="text" name="task" class="form-control" placeholder="Enter New Task">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
